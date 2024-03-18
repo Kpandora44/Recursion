@@ -1,1 +1,29 @@
+//Задача 3: Задайте произвольный массив. Выведете его элементы, начиная с конца. Использовать рекурсию, не использовать циклы.
+Random random = new Random();
+int[] FillRandomArray(int size)
+{
+    int[] arr = new int[size];
+    FillArray(arr, size - 1); 
+    return arr;
+}
+void FillArray(int[] arr, int index)
+{
+    if (index < 0)
+        return;
 
+    arr[index] = random.Next(0, 1000);
+    FillArray(arr, index - 1); 
+}
+void PrintArrayReversed(int[] arr, int index)
+{
+    if (index < 0)
+        return;
+    Console.Write(arr[index] + " ");
+    PrintArrayReversed(arr, index - 1); 
+}
+Console.WriteLine("Введите размерность одномерного массива: ");
+int length = Convert.ToInt32(Console.ReadLine());
+int[] arr = FillRandomArray(length);
+
+Console.WriteLine("Массив в обратном порядке:");
+PrintArrayReversed(arr, length - 1); 
